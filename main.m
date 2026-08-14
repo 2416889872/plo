@@ -6,9 +6,15 @@ close all;
 %% 添加路径
 
 addpath('./Algorithms');
-addpath('./Functions');
-addpath('./Map');
-addpath('./Plot');
+addpath('./Function');
+addpath('./map');
+if exist('./Plot','dir')
+    addpath('./Plot');
+end
+
+if ~exist('./Result','dir')
+    mkdir('./Result');
+end
 
 
 % 地图环境
@@ -55,13 +61,13 @@ ylabel('Y');
 
 
 
-SearchAgents = 30;     % 种群数量
+SearchAgents = 50;     % 种群数量
 
-Max_iter = 200;        % 最大迭代次数
+Max_iter = 500;        % 最大迭代次数
 
 
 % 路径控制点数量
-point_num=8;
+point_num=10;
 
 dim=point_num*2;
 
@@ -269,17 +275,8 @@ legend(...
 'Goal',...
 'PLO',...
 'CPLO',...
-'BCPLO');
-
-grid on;
-
-legend(...
-'Obstacle',...
-'Start',...
-'Goal',...
-'PLO',...
-'CPLO',...
-'BCPLO');
+'BCPLO raw',...
+'BCPLO smooth');
 
 
 grid on;
